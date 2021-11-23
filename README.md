@@ -10,6 +10,6 @@ Navigate into  the project repository using
 
 ### `npm install`
 
-## Running the web deployment
+## Run the web deployment
 ### `npm start`
 After this completes, you will be able to see the project by navigating to `localhost:3000` on your web browser. Please use Google Chrome for the best optimization.
