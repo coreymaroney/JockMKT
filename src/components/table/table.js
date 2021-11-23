@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from "react";
-import MUIDataTable from "mui-datatables";
+import { getMuiTheme, columns, options } from "./lib";
 import { ThemeProvider } from "@mui/material/styles";
+import React, { useState, useEffect } from "react";
 import nbaData from "../../server/nba_event.json";
-import { getMuiTheme } from "./lib";
-/*
-  ToDo: add useEffect and useState
-  create function to push tradeable objects into an array of objects for the table
-*/
+import MUIDataTable from "mui-datatables";
 
 function Table() {
   const [entities, setEntities] = useState([]);
 
   const getEntities = () => {
+    //eslint-disable-next-line
     const allEntities = nbaData.event.tradeables.map((tradeable) => {
       let entity = {
         playerName: '',
@@ -48,52 +45,7 @@ function Table() {
     setEntities(getEntities());
   }, []);
 
-  const columns = [
-    {
-      name: "playerName",
-      label: "Name",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "position",
-      label: "Position",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "projectedFantasyPoints",
-      label: "Projected fantasy points",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "actualFantasyPoints",
-      label: "Actual fantasy points",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "estimatedPrice",
-      label: "Estimated price ($)",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-  ];
 
-  const options = {
-    filterType: "checkbox",
-  };
   return (
     <ThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
